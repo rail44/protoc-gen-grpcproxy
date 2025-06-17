@@ -111,8 +111,8 @@ func GenerateFile(p *protogen.Plugin, f *protogen.File, cfg *Config) *protogen.G
 				IsStreamingServer: method.Desc.IsStreamingServer(),
 			}
 
-			input := method.Input.GoIdent.GoName
-			output := method.Output.GoIdent.GoName
+			input := g.QualifiedGoIdent(method.Input.GoIdent)
+			output := g.QualifiedGoIdent(method.Output.GoIdent)
 			if cfg.Standalone {
 				// handle emptypb
 				if input != emptypbPackage.Ident("Empty").GoName {
